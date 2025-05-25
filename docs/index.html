@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>房产信息表</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .table-container {
+            padding: 30px;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 18px 15px;
+            border-bottom: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        tr:hover {
+            background-color: #f8f9ff;
+            transform: scale(1.01);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .address {
+            font-weight: 500;
+            color: #2c3e50;
+            font-size: 1.05em;
+        }
+        
+        .time-good {
+            color: #27ae60;
+            font-weight: 600;
+            background: linear-gradient(135deg, #a8e6cf 0%, #dcedc8 100%);
+            padding: 8px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .time-good::before {
+            content: "✓";
+            margin-right: 5px;
+            font-weight: bold;
+        }
+        
+        .time-normal {
+            color: #e67e22;
+            font-weight: 500;
+            padding: 8px 12px;
+            background: #fff3e0;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        
+        .price {
+            font-weight: 600;
+            color: #8e44ad;
+            font-size: 1.1em;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 10px 15px;
+            border-radius: 25px;
+            display: inline-block;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background: #f8f9fa;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #6c757d;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            th, td {
+                padding: 12px 8px;
+                font-size: 0.9em;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏠 房产信息表</h1>
+            <p>生成时间: 2025-05-25 12:57:40</p>
+        </div>
+        
+        <div class="table-container">
+
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">房产总数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">¥79,343</div>
+                    <div class="stat-label">平均价格</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">优质通勤</div>
+                </div>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>📍 地址</th>
+                        <th>🚇 Y点通勤时间</th>
+                        <th>🚇 Z点通勤时间</th>
+                        <th>💰 价格</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td class="address">横浜市神奈川区菅田町488</td>
+                        <td><span class="time-normal">89分钟</span></td>
+                        <td><span class="time-normal">82分钟</span></td>
+                        <td><span class="price">¥66,500</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="address">横浜市青葉区奈良町2913</td>
+                        <td><span class="time-normal">73分钟</span></td>
+                        <td><span class="time-normal">111分钟</span></td>
+                        <td><span class="price">¥74,000</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="address">川崎市麻生区虹ケ丘2-2</td>
+                        <td><span class="time-normal">81分钟</span></td>
+                        <td><span class="time-normal">82分钟</span></td>
+                        <td><span class="price">¥75,100</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="address">横浜市神奈川区神大寺2-9</td>
+                        <td><span class="time-normal">84分钟</span></td>
+                        <td><span class="time-normal">98分钟</span></td>
+                        <td><span class="price">¥74,000</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="address">横浜市青葉区すすき野3-6-1</td>
+                        <td><span class="time-normal">77分钟</span></td>
+                        <td><span class="time-normal">85分钟</span></td>
+                        <td><span class="price">¥80,700</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="address">横浜市緑区霧が丘3-22-5</td>
+                        <td><span class="time-normal">88分钟</span></td>
+                        <td><span class="time-normal">101分钟</span></td>
+                        <td><span class="price">¥86,700</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="address">川崎市多摩区菅北浦5-7</td>
+                        <td><span class="time-normal">67分钟</span></td>
+                        <td><span class="time-normal">105分钟</span></td>
+                        <td><span class="price">¥98,400</span></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
