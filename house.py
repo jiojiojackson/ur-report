@@ -34,12 +34,14 @@ def run(playwright: Playwright) -> None:
     page.get_by_role("button", name="この条件で検索する").nth(1).click()
     # 这里等待时间可以稍长一些，因为是搜索操作
     page.wait_for_timeout(5000)
+    print("搜索完成")
     
     pages = page.locator(".js-module_searchs_property").all()
     houses = []
     for page in pages:
         text_content = page.text_content()
         text_content = re.sub(r'\s{2,}', '\n', text_content.strip())
+        print(text_content)
         address, prices = get_house_info(text_content)
         price = sum_prices(prices[0])
         if price > 100000:
