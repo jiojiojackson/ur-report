@@ -1,6 +1,11 @@
-def generate_html_table(data):
-    # CSS样式
-    css_style = """
+
+    <!DOCTYPE html>
+    <html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>房产信息表格</title>
+        
     <style>
         .property-table {
             border-collapse: collapse;
@@ -81,17 +86,7 @@ def generate_html_table(data):
             font-weight: 300;
         }
     </style>
-    """
     
-    # HTML开始
-    html = f"""
-    <!DOCTYPE html>
-    <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>房产信息表格</title>
-        {css_style}
     </head>
     <body>
         <div class="container">
@@ -106,53 +101,59 @@ def generate_html_table(data):
                     </tr>
                 </thead>
                 <tbody>
-    """
     
-    # 生成表格行
-    for item in data:
-        # 判断时间成本的样式类
-        time_y_class = "time-good" if item['time_costY'] < 60 else "time-normal"
-        time_z_class = "time-good" if item['time_costZ'] < 60 else "time-normal"
-        
-        # 格式化价格
-        formatted_price = f"¥{item['prices']:,}"
-        
-        html += f"""
                     <tr>
-                        <td class="address-cell">{item['address']}</td>
-                        <td><span class="{time_y_class}">{item['time_costY']}</span></td>
-                        <td><span class="{time_z_class}">{item['time_costZ']}</span></td>
-                        <td class="price-cell">{formatted_price}</td>
+                        <td class="address-cell">横浜市神奈川区菅田町488</td>
+                        <td><span class="time-normal">89</span></td>
+                        <td><span class="time-normal">82</span></td>
+                        <td class="price-cell">¥66,500</td>
                     </tr>
-        """
-    
-    # HTML结束
-    html += """
+        
+                    <tr>
+                        <td class="address-cell">横浜市青葉区奈良町2913</td>
+                        <td><span class="time-normal">73</span></td>
+                        <td><span class="time-normal">111</span></td>
+                        <td class="price-cell">¥74,000</td>
+                    </tr>
+        
+                    <tr>
+                        <td class="address-cell">川崎市麻生区虹ケ丘2-2</td>
+                        <td><span class="time-normal">81</span></td>
+                        <td><span class="time-normal">82</span></td>
+                        <td class="price-cell">¥75,100</td>
+                    </tr>
+        
+                    <tr>
+                        <td class="address-cell">横浜市神奈川区神大寺2-9</td>
+                        <td><span class="time-normal">84</span></td>
+                        <td><span class="time-normal">98</span></td>
+                        <td class="price-cell">¥74,000</td>
+                    </tr>
+        
+                    <tr>
+                        <td class="address-cell">横浜市青葉区すすき野3-6-1</td>
+                        <td><span class="time-normal">77</span></td>
+                        <td><span class="time-normal">85</span></td>
+                        <td class="price-cell">¥80,700</td>
+                    </tr>
+        
+                    <tr>
+                        <td class="address-cell">横浜市緑区霧が丘3-22-5</td>
+                        <td><span class="time-normal">88</span></td>
+                        <td><span class="time-normal">101</span></td>
+                        <td class="price-cell">¥86,700</td>
+                    </tr>
+        
+                    <tr>
+                        <td class="address-cell">川崎市多摩区菅北浦5-7</td>
+                        <td><span class="time-normal">67</span></td>
+                        <td><span class="time-normal">105</span></td>
+                        <td class="price-cell">¥98,400</td>
+                    </tr>
+        
                 </tbody>
             </table>
         </div>
     </body>
     </html>
-    """
     
-    return html
-
-# 使用数据生成HTML
-data = [
-    {'address': '横浜市神奈川区菅田町488', 'time_costY': 89, 'time_costZ': 82, 'prices': 66500},
-    {'address': '横浜市青葉区奈良町2913', 'time_costY': 73, 'time_costZ': 111, 'prices': 74000},
-    {'address': '川崎市麻生区虹ケ丘2-2', 'time_costY': 81, 'time_costZ': 82, 'prices': 75100},
-    {'address': '横浜市神奈川区神大寺2-9', 'time_costY': 84, 'time_costZ': 98, 'prices': 74000},
-    {'address': '横浜市青葉区すすき野3-6-1', 'time_costY': 77, 'time_costZ': 85, 'prices': 80700},
-    {'address': '横浜市緑区霧が丘3-22-5', 'time_costY': 88, 'time_costZ': 101, 'prices': 86700},
-    {'address': '川崎市多摩区菅北浦5-7', 'time_costY': 67, 'time_costZ': 105, 'prices': 98400}
-]
-
-# 生成HTML
-html_content = generate_html_table(data)
-
-# 保存到文件
-with open('docs/index.html', 'w', encoding='utf-8') as f:
-    f.write(html_content)
-
-print("美观的HTML表格已生成：beautiful_property_table.html")
