@@ -222,7 +222,7 @@ data = [
 styled_markdown = generate_styled_markdown(data)
 
 # 保存到Markdown文件
-with open('property_report.md', 'w', encoding='utf-8') as f:
+with open('README.md', 'w', encoding='utf-8') as f:
     f.write(styled_markdown)
 
 print("带样式的Markdown报告已生成并保存到 property_report.md 文件中")
