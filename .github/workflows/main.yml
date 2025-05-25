@@ -2,7 +2,7 @@ name: Daily Playwright Python Job
 
 on:
   schedule:
-    - cron: '0 4 * * *'  # 每天12:00 北京时间（UTC+8）
+    - cron: '*/15 * * * *'  # 每15分钟执行一次
   workflow_dispatch:     # 允许手动触发
 
 jobs:
@@ -25,7 +25,7 @@ jobs:
           python -m playwright install
 
       - name: Run Playwright script
-        run: python report.py
+        run: python house_en.py
 
       - name: Check for changes
         id: verify-changed-files
