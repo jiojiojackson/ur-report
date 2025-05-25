@@ -1,5 +1,6 @@
 import re
 from datetime import datetime
+import pytz
 
 
 def get_house_info(text):
@@ -86,8 +87,9 @@ def sum_prices(price_str):
     return None
 
 def generate_html_table(data):
-    # 获取当前时间
-    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # 获取日本时区的当前时间
+    japan_tz = pytz.timezone('Asia/Tokyo')
+    current_time = datetime.now(japan_tz).strftime("%Y-%m-%d %H:%M:%S")
     
     # HTML模板开始
     html_template = f"""
