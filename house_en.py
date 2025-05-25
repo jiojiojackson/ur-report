@@ -15,6 +15,55 @@ addressZ = "みなとみらい駅"
 def run(playwright: Playwright) -> None:
     browser = playwright.chromium.launch()
     context = browser.new_context()
+
+    #修改
+    houses = []
+    page = context.new_page()
+    page.goto("https://www.ur-net.go.jp/chintai/")
+    page.locator("#js-pref_map").get_by_text("東京都").click()
+    page.get_by_role("link", name="エリアから探す").click()
+    page.wait_for_timeout(wait_milliseconds)
+    page.get_by_role("heading", name="区南").locator("label").click()
+    page.wait_for_timeout(wait_milliseconds)
+    text_element = page.get_by_text("該当空室件数").nth(1)  # nth(1) 如果你确定要找第二个
+    full_text = text_element.inner_text()
+
+    # 用正则提取数字
+    match = re.search(r"該当空室件数\s*：\s*(\d+)件", full_text)
+    if match:
+        count = int(match.group(1))
+        print(f"空室件数为：{count}")
+        if count > 0:
+            # 点击搜索按钮
+            page.get_by_role("button", name="この条件で検索する").nth(1).click()
+            # 这里等待时间可以稍长一些，因为是搜索操作
+            page.wait_for_timeout(wait_milliseconds*2)
+            print("搜索完成")
+            
+            pages = page.locator(".js-module_searchs_property").all()
+            print("获取到", len(pages), "个房源")
+            
+            for page in pages:
+                text_content = page.text_content()
+                text_content = re.sub(r'\s{2,}', '\n', text_content.strip())
+                #修改
+                if "駅 徒歩" not in text_content:
+                    continue
+                # 修改
+                address, prices = get_house_info(text_content)
+                try:
+                    price = sum_prices(prices[0])
+                except:
+                    continue
+                if price > 100000:
+                    break
+                houses.append({
+                    "address": address,
+                    "prices": prices
+                })
+
+    #修改
+
     page = context.new_page()
     page.goto("https://www.ur-net.go.jp/chintai/")
     page.locator("#js-pref_map").get_by_text("神奈川県").click()
@@ -38,10 +87,13 @@ def run(playwright: Playwright) -> None:
     
     pages = page.locator(".js-module_searchs_property").all()
     print("获取到", len(pages), "个房源")
-    houses = []
     for page in pages:
         text_content = page.text_content()
         text_content = re.sub(r'\s{2,}', '\n', text_content.strip())
+        #修改
+        if "駅 徒歩" not in text_content:
+            continue
+        # 修改
         address, prices = get_house_info(text_content)
         print(prices)
         try:
