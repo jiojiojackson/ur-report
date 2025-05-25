@@ -47,6 +47,28 @@ def convert_to_minutes(time_str):
     
     return total_minutes
 
+def convert_to_minutes_en(time_str):
+    """将时间字符串转换为分钟数
+    支持格式：
+    - "1 時間 26 分" -> 86分钟
+    - "58 分" -> 58分钟
+    """
+    total_minutes = 0
+    
+    # 处理包含小时的情况
+    if "hr" in time_str:
+        # 提取小时数
+        hours = int(re.search(r'(\d+)\s*hr', time_str).group(1))
+        total_minutes += hours * 60
+    
+    # 处理包含分钟的情况
+    if "min" in time_str:
+        # 提取分钟数
+        minutes = int(re.search(r'(\d+)\s*min', time_str).group(1))
+        total_minutes += minutes
+    
+    return total_minutes
+
 def sum_prices(price_str):
     """提取价格字符串中的两个数字并求和
     例如: "110,200円(2,300円)" -> 112500
