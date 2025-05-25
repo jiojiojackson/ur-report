@@ -41,8 +41,8 @@ def run(playwright: Playwright) -> None:
     for page in pages:
         text_content = page.text_content()
         text_content = re.sub(r'\s{2,}', '\n', text_content.strip())
-        print(text_content)
         address, prices = get_house_info(text_content)
+        print(prices)
         price = sum_prices(prices[0])
         if price > 100000:
             break
