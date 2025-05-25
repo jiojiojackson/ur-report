@@ -6,7 +6,7 @@ import requests
 
 
 
-wait_milliseconds = 3000
+wait_milliseconds = 5000
 addressY = "〒160-0021 東京都新宿区歌舞伎町２丁目１９−１３ Ask ビル"
 addressZ = "〒135-0091 東京都港区台場１丁目７−１"
 
@@ -33,10 +33,11 @@ def run(playwright: Playwright) -> None:
     # 点击搜索按钮
     page.get_by_role("button", name="この条件で検索する").nth(1).click()
     # 这里等待时间可以稍长一些，因为是搜索操作
-    page.wait_for_timeout(5000)
+    page.wait_for_timeout(wait_milliseconds*2)
     print("搜索完成")
     
     pages = page.locator(".js-module_searchs_property").all()
+    print("获取到", len(pages), "个房源")
     houses = []
     for page in pages:
         text_content = page.text_content()
@@ -50,7 +51,7 @@ def run(playwright: Playwright) -> None:
             "address": address,
             "prices": prices
         })
-    print("获取到", len(houses), "个房源")
+    
 
 
     for house in houses:
@@ -79,7 +80,7 @@ def run(playwright: Playwright) -> None:
         page.get_by_role("textbox", name="目的地を入力するか、地図をクリック").fill(address)
         page.wait_for_timeout(wait_milliseconds)
         page.get_by_role("radio", name="公共交通機関").click()
-        page.wait_for_timeout(5000)
+        page.wait_for_timeout(wait_milliseconds*2)
         link = page.get_by_role("link").nth(0)
         text = link.inner_text()
         lines = text.split('\n')
