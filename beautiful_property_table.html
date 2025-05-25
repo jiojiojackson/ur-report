@@ -1,0 +1,159 @@
+
+    <!DOCTYPE html>
+    <html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>房产信息表格</title>
+        
+    <style>
+        .property-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .property-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .property-table td {
+            text-align: center;
+            padding: 12px 10px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 13px;
+        }
+        
+        .property-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .property-table tr:hover {
+            background-color: #e3f2fd;
+            transform: scale(1.01);
+            transition: all 0.2s ease;
+        }
+        
+        .time-good {
+            background-color: #4CAF50 !important;
+            color: white;
+            font-weight: bold;
+            border-radius: 4px;
+            padding: 6px 8px;
+        }
+        
+        .time-normal {
+            background-color: #FF9800;
+            color: white;
+            border-radius: 4px;
+            padding: 6px 8px;
+        }
+        
+        .address-cell {
+            text-align: left;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .price-cell {
+            font-weight: bold;
+            color: #2E7D32;
+            font-size: 14px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .title {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 300;
+        }
+    </style>
+    
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="title">🏠 房产信息一览表</h1>
+            <table class="property-table">
+                <thead>
+                    <tr>
+                        <th>地址</th>
+                        <th>通勤时间Y (分钟)</th>
+                        <th>通勤时间Z (分钟)</th>
+                        <th>价格 (円)</th>
+                    </tr>
+                </thead>
+                <tbody>
+    
+                    <tr>
+                        <td class="address-cell">横浜市神奈川区菅田町488</td>
+                        <td><span class="time-normal">89</span></td>
+                        <td><span class="time-normal">82</span></td>
+                        <td class="price-cell">¥66,500</td>
+                    </tr>
+        
+                    <tr>
+                        <td class="address-cell">横浜市青葉区奈良町2913</td>
+                        <td><span class="time-normal">73</span></td>
+                        <td><span class="time-normal">111</span></td>
+                        <td class="price-cell">¥74,000</td>
+                    </tr>
+        
+                    <tr>
+                        <td class="address-cell">川崎市麻生区虹ケ丘2-2</td>
+                        <td><span class="time-normal">81</span></td>
+                        <td><span class="time-normal">82</span></td>
+                        <td class="price-cell">¥75,100</td>
+                    </tr>
+        
+                    <tr>
+                        <td class="address-cell">横浜市神奈川区神大寺2-9</td>
+                        <td><span class="time-normal">84</span></td>
+                        <td><span class="time-normal">98</span></td>
+                        <td class="price-cell">¥74,000</td>
+                    </tr>
+        
+                    <tr>
+                        <td class="address-cell">横浜市青葉区すすき野3-6-1</td>
+                        <td><span class="time-normal">77</span></td>
+                        <td><span class="time-normal">85</span></td>
+                        <td class="price-cell">¥80,700</td>
+                    </tr>
+        
+                    <tr>
+                        <td class="address-cell">横浜市緑区霧が丘3-22-5</td>
+                        <td><span class="time-normal">88</span></td>
+                        <td><span class="time-normal">101</span></td>
+                        <td class="price-cell">¥86,700</td>
+                    </tr>
+        
+                    <tr>
+                        <td class="address-cell">川崎市多摩区菅北浦5-7</td>
+                        <td><span class="time-normal">67</span></td>
+                        <td><span class="time-normal">105</span></td>
+                        <td class="price-cell">¥98,400</td>
+                    </tr>
+        
+                </tbody>
+            </table>
+        </div>
+    </body>
+    </html>
+    
