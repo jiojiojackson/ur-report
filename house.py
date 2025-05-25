@@ -44,7 +44,10 @@ def run(playwright: Playwright) -> None:
         text_content = re.sub(r'\s{2,}', '\n', text_content.strip())
         address, prices = get_house_info(text_content)
         print(prices)
-        price = sum_prices(prices[0])
+        try:
+            price = sum_prices(prices[0])
+        except:
+            continue
         if price > 100000:
             break
         houses.append({
