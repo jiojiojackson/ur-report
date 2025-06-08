@@ -2,6 +2,8 @@
 
 A tool for automatically collecting and analyzing UR housing property information in Japan, with a focus on commute times and rental prices.
 
+## Demo
+https://jiojiojackson.github.io/ur-report/
 ## Features
 
 - Automatically scrapes UR housing listings in the Kawasaki and Northern Yokohama areas
